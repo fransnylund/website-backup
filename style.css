@@ -33,7 +33,9 @@ img {padding-bottom: 25px; width: 18em; height: 18em; } /* 18em */
   text-align: center; 
 }
 
-* { 
+li {overflow-wrap: normal;}
+
+*{ 
   min-height: 100%; 
   overflow-wrap: break-word;
 }
@@ -87,7 +89,7 @@ li {padding: 10px;}
 }
 
 @media screen and (max-width: 410px) {
-  img { height: 14em; width: 14em; }
+  img { height: 18.625em; width: 14em; } // 14em
 }
 
 @media screen and (max-width: 380px) {
@@ -95,5 +97,5 @@ li {padding: 10px;}
 }
 
 @media screen and (max-width: 340px) {
-  img { height: 13em; width: 13em; }
+  img { height: 17.3125em; width: 13em; } // 13em
 }
