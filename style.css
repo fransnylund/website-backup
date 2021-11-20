@@ -33,7 +33,10 @@ img {padding-bottom: 25px; width: 18em; height: 18em; } /* 18em */
   text-align: center; 
 }
 
-li {overflow-wrap: normal;}
+li {
+  overflow-wrap: normal;
+  padding: 10px;
+}
 
 *{ 
   min-height: 100%; 
@@ -78,7 +81,9 @@ h2 {
   padding-bottom: 10px;
 }
 
-li {padding: 10px;}
+a { text-decoration: none; }
+
+
 
 @media screen and (max-width: 992px) {
   .main { width: 90%; }
