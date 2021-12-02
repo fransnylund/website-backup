@@ -24,7 +24,18 @@ header > h1 {
   font-size: 2.2em;
 }
 
-img {padding-bottom: 25px; width: 18em; height: 18em; } /* 18em */
+.mainpage{padding-bottom: 25px; width: 50%; height: 50%; } /* width and height: 18em */
+
+.latex img{padding-bottom: 25px; width: 100%; height: 100%; } /* width: 30em, height: 28em. 18em */
+
+/*.latex .resize{padding-bottom: 25px; width: 38em; height: 28em; } /* 18em */
+
+.latex .resize{padding-bottom: 25px; width: 100%; height: 100%; } /*width: 38em, height: 28em. 18em */
+
+/*.latex .resize2{padding-bottom: 25px; width: 38em; height: 18em; } /* 18em */
+
+.title {text-align: center;}
+
 
 .main {
   width: 700px;   /* 40% 700px or 800px */
@@ -83,6 +94,9 @@ h2 {
 
 a { text-decoration: none; }
 
+code {background-color: #E2E2E2; padding: 4px;}
+
+img + em {border: 0px solid black; padding: 4px;}
 
 
 @media screen and (max-width: 992px) {
@@ -94,13 +108,15 @@ a { text-decoration: none; }
 }
 
 @media screen and (max-width: 410px) {
-  img { height: 18.625em; width: 14em; } // 14em
+  /*img { height: 18.625em; width: 14em; } // 14em*/
+   .mainpage {height: 100%; width: 100%;}
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 430px) {
   .menu { display: flex; flex-direction: column; }
 }
 
 @media screen and (max-width: 340px) {
-  img { height: 17.3125em; width: 13em; } // 13em
+  /*img { height: 17.3125em; width: 13em; } // 13em*/
+/*  .mainpage {height: 100%; width: 100%;}*/
 }

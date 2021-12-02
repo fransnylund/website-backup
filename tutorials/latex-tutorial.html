@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title> Frans's Tech Site</title>
+	<link rel="icon" href="../img/favicon.png" type="image/png">
+	<meta charset="utf-8">
+	<meta name="keywords" content="programming, computers, linux, blog">
+	<meta name="description" content="Tutorials, blogs, computers, Linux and more!">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../style.css">
+  </head>
+
+
+<body>
+<div class="main">
+  <header>
+	<h1> Frans's Tech Site </h1>
+	<div class="menu">
+	  <a href="https://www.fransnylund.com">Home</a>
+	  <a href="https://www.fransnylund.com/tutorials/tutorials.html">Tutorials</a>
+	  <a href="https://www.fransnylund.com/blog/blog.html">Blog</a>
+	  <a href="https://www.fransnylund.com/setup.html">Setup</a>
+	  <a href="https://www.fransnylund.com/contact/contact.html">Contact</a>
+  </header>
+  <main class="latex">
+<p class="date">Nov 28, 2021</p>
+<h1 id="table-of-contents">Table of Contents</h1>
+<ol type="1">
+<li><a href="#introduction-to-latex">Introduction to Latex</a></li>
+<li><a href="#compiling-a-latex-document">Compiling a Latex Document</a></li>
+<li><a href="#the-preamble">The Preamble</a></li>
+<li><a href="#document-environment">Document Environment</a></li>
+<li><a href="#arguments">Arguments</a></li>
+<li><a href="#fonts">Fonts</a></li>
+<li><a href="#font-families">Font Families</a></li>
+<li><a href="#changing-the-font-typeface">Changing the Font Typeface</a></li>
+<li><a href="#font-styles">Font Styles</a></li>
+<li><a href="#titles">Titles</a></li>
+<li><a href="#changing-the-sections-chapters-and-more">Changing the Sections, Chapters and More</a></li>
+<li><a href="#line-spacing">Line Spacing</a></li>
+<li><a href="#line-breaks">Line Breaks</a></li>
+<li><a href="#alignment">Alignment</a></li>
+<li><a href="#indentation">Indentation</a></li>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#paper-sizes">Paper Sizes</a></li>
+<li><a href="#margins">Margins</a></li>
+<li><a href="#landscape">Landscape</a></li>
+<li><a href="#custom-commands">Custom Commands</a></li>
+<li><a href="#environments">Environments</a></li>
+<li><a href="#creating-a-ruler">Creating a Ruler</a></li>
+<li><a href="#images">Images</a></li>
+<li><a href="#sections">Sections</a></li>
+<li><a href="#tables-of-contents">Table of Contents</a></li>
+<li><a href="#labels-and-references">Labels and References</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#the-the-commands">The “the” Commands</a></li>
+<li><a href="#packages">Packages</a></li>
+<li><a href="#final-word">Final Word</a></li>
+</ol>
+<h1 class="title" id="introduction-to-latex">Introduction to Latex</h1>
+<p>Latex is software that is intended for writing articles, books, documents, presentations and more. You have probably used Microsoft Word, which is a very popular word processor where you can write articles and books. Latex is very different in the way it makes and formats text, but both Latex and Word share the same purpose: To make formatted, nice text. Latex is common in academia and widely used to write scientific documents, and is great for writing math and physics equations and symbols. Latex is free and open-source software and is available on a slew of different platforms. Latex is extremely customizable and you can do a lot with it, but it does have a somewhat high learning curve compared to something like Word. This tutorial is meant to help you get started writing in Latex and is not a comprehensive tutorial.</p>
+<p>There are some benefits that Latex offers over Microsoft Word:</p>
+<ul>
+<li>Free(both as in freedom and price)</li>
+<li>Support for a host of math symbols and older languages</li>
+<li>Labels and references</li>
+<li>Easily convertable to different formats</li>
+<li>You can use any editor you want</li>
+</ul>
+<p>Start by installing Latex. If you are on Linux, just install it with your package manager. If you are on Windows or Mac check <a href="https://www.latex-project.org/get/">this site</a> out. The good thing with Latex is that you can use any editor you want. I use vim, for example. It works fine for me. I will be using pdflatex and xelatex to convert my documents to a PDF. You are free to use whatever you want. I will try to mention if a specific package requires a specific Latex engine to compile.</p>
+<h2 id="compiling-a-latex-document">Compiling a Latex Document</h2>
+<p>If you are either using pdflatex or xelatex, simply do <code>pdflatex name-of-my-latex-document.tex</code> or <code>xelatex name-of-my-latex-document.tex</code>. This will generate a pdf with the same name.</p>
+<p>I haven’t used Latex on either Windows or Mac, so I don’t know how it works on those platforms.</p>
+<h2 id="the-preamble">The Preamble</h2>
+<p><img src="./img/preamble-env.png" /></p>
+<p>Every Latex document is divided into two main parts — the preamble and the document environment. The premable is the top part. That is where you’re going to specify what document you are going to write, what packages to include among other things.</p>
+<p><img src="./img/preamble-env2.png" class="resize" /><em>You can right click on the image and choose “Open Image in New Tab” to view it in full size.</em><br />
+</p>
+<p>To specify what type of document you’re going to use, use the <code>\documentclass{}</code> command at the top of your document. These are the most common arguments:</p>
+<p>For articles:</p>
+<p><code>\documentclass{article}</code></p>
+<p>For books:</p>
+<p><code>\documentclass{book}</code></p>
+<p>For presentations:</p>
+<p><code>\documentclass{beamer}</code></p>
+<p>I’ll be going with <code>\documentclass{article}</code> for most of this tutorial.<br />
+</p>
+<p>What are packages then? Packages include extra functionality and commands that you can use in Latex. Packages allow you to get huge fonts, embed pictures and use math symbols and so on.</p>
+<p>For instance, to adjust the margins of your document, include the <em>geometry</em> package:</p>
+<p><code>\usepackage{geometry}</code></p>
+<p>To use bigger fonts than 10pt, 11pt or 12pt, include the <em>extsizes</em> package:</p>
+<p><code>\usepackage{extsizes}</code></p>
+<p>To embed graphics, like pictures, include the <em>graphicx</em> package:</p>
+<p><code>\usepackage{graphicx}</code></p>
+<p>I will talk more about these later in the guide, these are just a few examples. I will also have a small list of packages and their uses in the end of this tutorial.</p>
+<h2 id="document-environment">Document Environment</h2>
+<p>Remember when I said that Latex documents are divided into two parts? This is the second part, the meat of the document. The document environment is the part where you type the <em>actual</em> text. It starts with <code>\begin{document}</code> and ends with <code>\end{document}</code></p>
+<p><code>\begin{document}</code><br />
+<code>Hello, world!</code><br />
+<code>This is some text.</code><br />
+<code>\end{document}</code></p>
+<p><img src="./img/document-env.png" /><br />
+<img src="./img/document-env2.png" class="resize" /></p>
+<h2 id="arguments">Arguments</h2>
+<p><code>\documentclass[]{}</code></p>
+<p>In Latex, the required arguments go inside the { } while optional arguments go inside [ ].</p>
+<p>For instance, you can specify that you are going to be writing a book and that the font size will be 12 by giving the documentclass two arguments:</p>
+<p><code>\documentclass[12pt]{book}</code></p>
+<h2 id="fonts">Fonts</h2>
+<p><img src="./img/font-sizes.png" class="resize" /></p>
+<p>The default font size in Latex is 10pt. If you wish to have larger font sizes than 12pt, you have to include the <em>extsizes</em> package.</p>
+<p>There are premade font sizes like <code>\tiny \large \Large \LARGE \huge</code> and <code>\Huge</code> that you can employ.</p>
+<p>Hello big, beautiful, <code>{\Large large}</code> world.</p>
+<p><img src="./img/hello.png" class="resize" /></p>
+<h3 id="font-families">Font Families</h3>
+<p><img src="./img/font-family2.png" class="resize" /><br />
+</p>
+<p>The three basic font families are Roman text, Sans serif text and typewriter text. The default is Roman.</p>
+<p><code>\textrm{Roman(serif) text}</code><br />
+<code>\textsf{Sans serif text}</code><br />
+<code>\texttt{Typewriter text}</code></p>
+<p><img src="./img/font-family.png" /><em> Ignore my f’d up syntax highlighter.</em><br />
+</p>
+<p><br />
+</p>
+<p>You can switch your entire document to one of the above with the following command:<br />
+</p>
+<p>This changes the whole document to a serif font:<br />
+<code>\renewcommand{\familydefault}{\rmdefault}</code></p>
+<p>This changes the whole document to a sans serif font:<br />
+<code>\renewcommand{\familydefault}{\sfdefault}</code></p>
+<p>This changes the whole document to a typewriter(monospace) font:<br />
+<code>\renewcommand{\familydefault}{\ttdefault}</code></p>
+<p><img src="./img/serif.png" /><br />
+<img src="./img/serif2.png" class="resize" /></p>
+<p>As you can see, the Roman looks exactl like what we had before. That’s because it is the default.</p>
+<p>Typewriter(monospace) text is text where every letter has the same width.</p>
+<p><img src="./img/monospace.png" class="resize" /></p>
+<h3 id="changing-the-font-typeface">Changing the Font Typeface</h3>
+<p>This can be done by first including a package that includes the typeface and then choosing between serif, sans serif or monospace.</p>
+<p>This changes the typeface of the entire document to Helvetica:</p>
+<p><code>\usepackage{helvet}</code><br />
+<code>\renewcommand{\familydefault}{\sfdefault}</code></p>
+<p><img src="./img/helvet.png" /><br />
+<img src="./img/helvet2.png" class="resize" /></p>
+<h3 id="font-styles">Font Styles</h3>
+<p><code>\textbf{I'm bold!}</code></p>
+<p><code>\textit{I'm italicized!}</code></p>
+<p><code>\underline{I'm underlined!}</code></p>
+<p>You can also use more than one modifier at the same time like so:</p>
+<p><code>\textbf{\textit{I'm bold and italicized!}}</code><br />
+<code>\textbf{\underline{I'm bold and underlined!}}</code></p>
+<p>Make sure you close the curly brackets, otherwise Latex will go crazy and refuse to compile.</p>
+<p>The <code>\emph</code> is used to add emphasis to a word or phrase. It will look different depending on the situation you use it in, but usually it looks similar to italics.</p>
+<p><code>\emph{I'm emphasized}</code></p>
+<p><img src="./img/font-style6.png" /><em>  Ignore my f’d up syntax highlighter.</em><br />
+<br />
+<img src="./img/font-style5.png" class="resize" /></p>
+<p>You can also use strikethrough text by including the <em>ulem</em> package:</p>
+<p><code>\usepackage{ulem}</code><br />
+<code>\sout{I'm strikethrough text!}</code></p>
+<p><img src="./img/strikethrough2.png" /><br />
+<img src="./img/strikethrough.png" class="resize" /></p>
+<h2 id="titles">Titles</h2>
+<p>Latex uses the following three commands to make a title, though only the first two are required.</p>
+<p><code>\title{The best document on the planet}</code></p>
+<p><code>\author{Frans}</code></p>
+<p><code>\date{January 1}</code></p>
+<p><strong>Note:</strong> The date is optional. Latex will automatically put the date in your title.</p>
+<p>In order to tell Latex to make the title, use the <code>\maketitle</code> command. Latex will then make a title based on the three commands that we issued(<code>\title</code>, <code>\author</code> and <code>\date</code>).</p>
+<p><img src="./img/title2.png" /><br />
+<img src="./img/title.png" class="resize" /></p>
+<h2 id="changing-the-sections-chapters-and-more">Changing the sections, chapters and more</h2>
+<p>You can change how the sections or chapters look like with the <em>titlesec</em> package.</p>
+<p><code>\usepackage{titlesec}</code></p>
+<p>The titlesec package includes a couple of useful things, such as <code>\titleformat</code>.</p>
+<p><code>\titleformat{\section}{\huge\bfseries}{\thesection}{1em}{\vspace{2em}}</code></p>
+<p>The first argument takes whatever you want to format. I’ve chosen \section in this case. The next argument takes the actual formatting. I’ve made the font size huge and <strong>bold</strong>. You can leave out the 3rd and last argument. The {1em}(or whatever size you want) has to be there. It specifies the space between the section number and the section name.</p>
+<p><img src="./img/titlesec.png" class="resize" /><br />
+<img src="./img/titlesec2.png" class="resize" /><br />
+</p>
+<h2 id="line-spacing">Line Spacing</h2>
+<p>You can add both vertical and horizontal spacing between any text.</p>
+<p>This will insert some space between the “Hello world!” and “Some random text”:</p>
+<p><code>Hello world!</code><br />
+<code>\vspace{3em}</code><br />
+<code>Some random text.</code></p>
+<p><img src="./img/line-spacing.png" /><br />
+<img src="./img/line-spacing2.png" class="resize" /><br />
+<img src="./img/line-spacing3.png" /><br />
+<img src="./img/line-spacing4.png" class="resize" /><br />
+</p>
+<p>The <code>\hspace{}</code> is used to create horizontal spacing.</p>
+<p><img src="./img/line-spacing5.png" /><br />
+<img src="./img/line-spacing6.png" class="resize" /><br />
+</p>
+<h2 id="line-breaks">Line Breaks</h2>
+<p>Using <code>\\</code> will make a newline.</p>
+<p>Another way of making a newline is by putting two newlines:</p>
+<p>Hello</p>
+<p>World</p>
+<p><img src="./img/new-line3.png" /><br />
+<img src="./img/new-line4.png" class="resize" /><br />
+</p>
+<p>There’s also the <code>\break</code> keyword that makes a newline:</p>
+<p><img src="./img/new-line6.png" /></p>
+<h2 id="alignment">Alignment</h2>
+<p>You can have left justified, centered, or right justified text in Latex.</p>
+<p><code>\begin{flushleft}</code><br />
+<code>Left-justified text here.</code><br />
+<code>\end{flushleft}</code></p>
+<p><code>\begin{center}</code><br />
+<code>Centered text here.</code><br />
+<code>\end{center}</code></p>
+<p><code>\begin{flushright}</code><br />
+<code>Right-justified text here.</code><br />
+<code>\end{flushright}</code></p>
+<p><img src="./img/alignment2.png" /><br />
+<img src="./img/alignment.png" class="resize" /><br />
+<img src="./img/alignment4.png" /><br />
+<img src="./img/alignment5.png" class="resize" /><br />
+<img src="./img/alignment6.png" /><br />
+<img src="./img/alignment7.png" class="resize" /></p>
+<p>Don’t ask me why it’s named “flushleft” and “flushright”. I have no idea.</p>
+<h2 id="indentation">Indentation</h2>
+<p>Latex will by default indent every line that starts a new paragraph.</p>
+<p>You can change the default behaviour by issuing a <code>\noindent</code> before the text.</p>
+<p><img src="./img/no-indent4.png" /><em>  blindtext is just something that prints random paragraphs in case you are wondering.</em>  <br />
+</p>
+<p><img src="./img/no-indent.png" class="resize" /><br />
+<img src="./img/no-indent2.png" /><br />
+<img src="./img/no-indent3.png" class="resize" /><br />
+</p>
+<h2 id="tables">Tables</h2>
+<p>Tables can be made by using the tabular environment:</p>
+<p><code>\begin{tabular}{alignment}</code><br />
+<code>The body of the table.</code><br />
+<code>\end{tabular}</code></p>
+<p><img src="./img/tables.png" /><br />
+<img src="./img/tables2.png" class="resize" /></p>
+<h2 id="lists">Lists</h2>
+<p>There are two types of lists in Latex: Unordered and ordered.</p>
+<p>To create an unordered list, use the <code>\begin{itemize}</code> command:</p>
+<p><code>\begin{itemize}</code><br />
+<code>\item First item</code><br />
+<code>\item Second Item</code><br />
+<code>\item Third Item</code><br />
+<code>\begin{itemize}</code><br />
+<code>\item First sub-item</code><br />
+<code>\item Secon sub-item</code><br />
+<code>\end{itemize}</code><br />
+<code>\end{itemize}</code></p>
+<p><img src="./img/unorderedlist2.png" /><br />
+<img src="./img/unorderedlist.png" class="resize" /></p>
+<p>To create an ordered list, use the <code>\begin{enumerate}</code> command:</p>
+<p><code>\begin{enumerate}</code><br />
+<code>\item First Item</code><br />
+<code>\item Second Item</code><br />
+<code>\begin{enumerate}</code><br />
+<code>\item First Sub-item</code><br />
+<code>\item Second Sub-item</code><br />
+<code>\end{enumerate}</code><br />
+<code>\end{enumerate}</code></p>
+<p><img src="./img/orderedlist.png" /><br />
+<img src="./img/orderedlist2.png" class="resize" /></p>
+<p>In the unordered list, you can specify what kind of list marker you want by giving an argument to the <code>\item</code> command, like so:</p>
+<p><code>\item[$\rightarrow$]</code></p>
+<p><img src="./img/unorderedlist4.png" /><br />
+<img src="./img/unorderedlist3.png" class="resize" /></p>
+<h2 id="paper-sizes">Paper sizes</h2>
+<p>The two common sizes are A4 and letter size paper.</p>
+<p>You can set which paper size you want in the <code>\documentclass</code> command. <code>\documentclass[ option ]{article}</code></p>
+<p>You can also make your own paper sizes by giving a couple of arguments when including the <em>geometry</em> package:</p>
+<p><code>\usepackage[paperwidth=, paperheight= ]{geometry}</code></p>
+<p><img src="./img/paper-sizes2.png" /><br />
+<img src="./img/paper-sizes.png" class="resize" /></p>
+<h2 id="margins">Margins</h2>
+<p>Just like you can specify what paper size you want, you can specify the margins that you wish to have. There are two ways of doing this:</p>
+<p><code>\usepackage[margin=size]{geometry}</code></p>
+<p>Or:</p>
+<p><code>\usepackage[top=size, bottom=size, left=size, right=size]{geometry}</code></p>
+<p><img src="./img/margins.png" alt="is just a command that outputs random paragraphs in case you are wondering" /><br />
+<img src="./img/margins2.png" class="resize" /><br />
+<img src="./img/margins3.png" /><br />
+<img src="./img/margins4.png" class="resize" /><br />
+</p>
+<h2 id="landscape">Landscape</h2>
+<p>In order to change the layout of your document to landscape, you have to include the <em>geometry</em> package and give it the argument “landscape”.</p>
+<p><code>\usepackage[landscape]{geometry}</code></p>
+<p><code>\begin{landscape}</code><br />
+<code>This should be landscape!</code><br />
+<code>\end{landscape}</code></p>
+<p>If you are using <em>pdflatex</em>, you have to include the pdflscape instead:</p>
+<p><code>\usepackage{pdflscape}</code></p>
+<p><img src="./img/landscape2.png" /><br />
+<img src="./img/landscape.png" class="resize" /></p>
+<h2 id="custom-commands">Custom Commands</h2>
+<p>You can create your own custom commands in Latex by using the <code>\newcommand</code> command. This is powerful and saves you a ton of typing.</p>
+<p><code>\newcommand{\nameofcommand}{what to execute}</code></p>
+<p><code>\newcommand{\fin}{Finland}</code></p>
+<p><img src="./img/custom-cmds2.png" /><br />
+<img src="./img/custom-cmds.png" class="resize" /></p>
+<p>Make writing <strong>bold</strong> easier:</p>
+<p><code>\newcommand{\bo}{\textbf}</code></p>
+<p>Now you don’t have to type <code>\textbf</code> everytime you want <strong>bolded</strong> text. Must feel good to save four keystrokes, am I right?</p>
+<p><img src="./img/custom-cmds4.png" /><br />
+<img src="./img/custom-cmds3.png" class="resize" /></p>
+<p>You can also redfine a command in Latex by using <code>\renewcommand</code>:</p>
+<p><code>\renewcommand{\nameofcommand}{whattoexecute}</code></p>
+<p><img src="./img/renewcommand.png" /><br />
+<img src="./img/renewcommand2.png" class="resize" /></p>
+<p>Now every time we use <code>\section</code>, the <code>\Huge</code> and <code>\bf</code> will automatically apply to it.</p>
+<h2 id="environments">Environments</h2>
+<p><code>\begin{environment}</code><br />
+<code>...</code><br />
+<code>\end{environment}</code></p>
+<p>We’ve already talked about the document environment, but there are other environments that you can use. An environment is just a section that does something with the text.<br />
+For example, this environment centers stuff:</p>
+<p><code>\begin{center}</code><br />
+<code>...</code><br />
+<code>\end{center}</code></p>
+<p><img src="./img/environment.png" /><br />
+<img src="./img/environment2.png" class="resize" /></p>
+<p>A table can be made with the tabular environment:</p>
+<p><code>\begin{tabular}</code><br />
+<code>...</code><br />
+<code>\end{tabular}</code></p>
+<p>We’ve also talked about the flushleft and flushright environments.</p>
+<h2 id="creating-a-ruler">Creating a Ruler</h2>
+<p><code>\rule{5pt}{0.75pt}</code> can be used to create a horizontal ruler. The first argument takes the width of the rule, while the second argument takes the thickness of the ruler.</p>
+<p><img src="./img/ruler2.png" /><br />
+<img src="./img/ruler.png" class="resize" /><br />
+<img src="./img/ruler4.png" /><br />
+<img src="./img/ruler3.png" class="resize" /></p>
+<h2 id="images">Images</h2>
+<p>Images can be embedded into Latex by including the <em>graphicx</em> package and using the <code>\includegraphics</code> command:</p>
+<p><code>\usepackage{graphicx}</code></p>
+<p><code>\includegraphics{mypicture.png}</code></p>
+<p><code>\includegraphics[width=10cm, height=5cm]{mypicture.png}</code></p>
+<p><img src="./img/image2.png" class="resize2" /><em> The “angel=-90” just changes my pictures orientation. It is not required.</em><br />
+</p>
+<p><img src="./img/image.png" class="resize" /><em>My doggy!</em><br />
+</p>
+<p>If you want to center the image, move the <code>\includegraphics</code> command inside a <code>\begin{center}</code> and <code>\end{center}</code> environment.</p>
+<h2 id="sections">Sections</h2>
+<p>There are three types of sections in Latex: <code>\section</code>, <code>\subsection</code>, and <code>\subsubsection</code>.</p>
+<p><code>\section{Section}</code><br />
+<code>\subsection{Subsection}</code><br />
+<code>\subsubsection{Subsubsection}</code></p>
+<p><img src="./img/sections2.png" /><br />
+<img src="./img/sections.png" class="resize" /></p>
+<p>The nice thing about Latex is that it will automatically number the section headings for you. You can of course remove the numbering if you prefer to go without them.</p>
+<h2 id="table-of-contents-1">Table of Contents</h2>
+<p>Table of Contents, or ToC for short, can be done by typing:</p>
+<p><code>\tableofcontents</code></p>
+<p>This will create a table of contents. You might have to compile the document twice or thrice in order for it to completely work. Latex has to first compile and count how many chapters you have, and then the second time it will complete the toc.</p>
+<p><img src="./img/toc2.png" /><em>  <code>\newpage</code> is used to go to a new page if you are wondering.</em>  <br />
+<img src="./img/toc.png" class="resize" /></p>
+<h2 id="labels-and-references">Labels and References</h2>
+<p>This is super handy in Latex. Let’s say you are referring to a section in your book, and suddenly you make a new section before it. Well, if you referred to the section as Section 4, it is now Section 5. Labels and references solve this nuisance.</p>
+<p><code>The chapter \ref{ghost} is about the ghost.</code></p>
+<p><code>\chapter{The scary ghost\label{ghost}}</code></p>
+<p>Now the <code>\ref{ghost}</code> will get substituted by whatever section number <code>\section{ghost}</code> happens to be, even if it changes.</p>
+<p><img src="./img/refs2.png" /><br />
+<img src="./img/refs.png" class="resize" /><br />
+<img src="./img/refs3.png" /><br />
+<img src="./img/refs4.png" class="resize" /></p>
+<p><strong>Note:</strong> You have to compile your document twice in order for this to work. Latex won’t know what <code>\ref{whatever}</code> refers to the first time it compiles, it only knows that the second time it compiles the document.</p>
+<h2 id="links">Links</h2>
+<p>More specifically, hyperlinks.</p>
+<p>To create a hyperlink, include the <em>hyperref</em> package. This will turn the table of contents into a series of hyperlinks. Also, all the <code>\ref{}</code> in the document will get turned into hyperlinks.</p>
+<p><code>\hyperref[ label ]{ Link text }</code> can be used to create custom links with custom text.</p>
+<p><code>\ref*{}</code> can be used to make a ref and avoid it becoming a link.</p>
+<p>The hyperref package also includes a <code>\href{ url }{text}</code> command to link to website on the internet.</p>
+<p><img src="./img/links.png" class="resize" /><br />
+<img src="./img/links3.png" /><br />
+<img src="./img/links2.png" class="resize" /></p>
+<h2 id="comments">Comments</h2>
+<p>Comments in Latex are done by using the % sign, like so:</p>
+<p><code>\begin{center} % Everything in this section will be centered.</code></p>
+<p><img src="./img/comments2.png" class="resize2" /><br />
+<img src="./img/comments.png" class="resize" /></p>
+<h2 id="the-the-commands">The “the” Commands</h2>
+<p>There are some commands that start with “the”. Here are the most common ones:</p>
+<p><code>\thepage</code> — prints the current page number wherever you use it.</p>
+<p><code>\thesection</code> — prints the current section that you are in.</p>
+<p><code>\thechapter</code> — prints the current chapter that you are in.</p>
+<p><code>\theauthor</code> — prints the author’s name.</p>
+<p><strong>Note:</strong> For <code>\theauthor</code> to work, you have to include the <em>titling</em> package.</p>
+<p><img src="./img/the3.png" /> <img src="./img/the.png" class="resize" /><br />
+</p>
+<h2 id="packages">Packages</h2>
+<p><em>extsizes</em> and <em>anyfontsize</em> — includes bigger fonts and such.</p>
+<p><em>ulem</em> — allows you to make strikethrough text.</p>
+<p><em>amsmath</em> — math stuff.</p>
+<p><em>tabularx</em> — better tables.</p>
+<p><em>enumitem</em> — customize your lists even further.</p>
+<p><em>lastpage</em> — total number of pages.</p>
+<p><em>libertine</em> — libertine fonts.</p>
+<p><em>fancyhdr</em> — fancy headers.</p>
+<p>These are just some of the ones that I have bumped into while reading about Latex online. There are thousands of more packages out there.</p>
+<h2 id="final-word">Final Word</h2>
+<p>To wrap it all up, Latex is huge. I’ve barely scratched the surface of Latex in this short tutorial. These are just the things you have to know to get started. Now that I am done with the tutorial, I will share a couple of tips and tricks that might help you when using Latex.</p>
+<ul>
+<li><p><code>{\LaTeX}</code> This writes Latex in the “nice” way.</p></li>
+<li><p>Always use { } when formatting words or sentences. E.g. <code>Hello \textbf{beautiful} world</code>. It is used as a separator to avoid formatting errors like missing whitespace and such.</p></li>
+<li><p>Escaping a backslash can be done with <code>\textbackslash</code>. Because \ makes a new line, you can’t use it to escape the backslash.</p></li>
+</ul>
+
+ </main>
+</div>
+</body>
+</html>
