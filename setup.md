@@ -20,27 +20,32 @@
 
 
 ### Browser
-- [Brave]()
+- [Brave](https://brave.com/)
 
 
 ### Text Editor
-- [Vim]()
+- [Vim](https://www.vim.org/)
 
 
 ### File Manager
 - [Ranger](https://github.com/ranger/ranger)
-- [PCManFM]()
+- [PCManFM](https://github.com/lxde/pcmanfm)
 
 
 ### Compositor
 - [Picom](https://wiki.archlinux.org/title/Picom)
 
+
 ### Email Client
-- [Thunderbird]()
+- [Thunderbird](https://www.thunderbird.net/en-US/get-involved/)
 
 
 ### PDF Viewer
-- [Evince]()
+- [Evince](https://gitlab.gnome.org/GNOME/evince)
+
+
+### Media Player
+- [mpv](https://mpv.io/)
 
 
 ### Image Viewer
