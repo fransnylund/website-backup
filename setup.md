@@ -21,6 +21,7 @@
 
 ### Browser
 - [Brave](https://brave.com/)
+- [Lynx](https://en.wikipedia.org/wiki/Lynx_(web_browser))
 
 
 ### Text Editor
@@ -29,7 +30,6 @@
 
 ### File Manager
 - [Ranger](https://github.com/ranger/ranger)
-- [PCManFM](https://github.com/lxde/pcmanfm)
 
 
 ### Compositor
