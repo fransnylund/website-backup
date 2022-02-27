@@ -105,13 +105,27 @@ a {
   font-size: var(--font-size);  
 }
 
-code {background-color: #E2E2E2; padding: 4px;}
+code {background-color: #E2E2E2; padding: 4px; font-size: 14px;}
 
 img + em {border: 0px solid black; padding: 4px;}
 
 p{
   font-size: var(--font-size);
 }
+
+
+
+/* Consider moving these into separate css files */
+
+.cmdline h2{
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+
+.cmdline h1{
+  padding-top: 10px;
+}
+
 
 
 @media screen and (max-width: 992px) {

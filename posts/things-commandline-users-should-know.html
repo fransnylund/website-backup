@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title> Frans's Tech Site</title>
+	<link rel="icon" href="../img/favicon.png" type="image/png">
+	<meta charset="utf-8">
+	<meta name="keywords" content="programming, computers, linux, blog">
+	<meta name="description" content="Tutorials, blogs, computers, Linux and more!">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../style.css">
+  </head>
+
+
+<body>
+<div class="main">
+  <header>
+	<h1> Frans's Tech Site </h1>
+	<div class="menu">
+	  <a href="https://www.fransnylund.com">Home</a>
+	  <a href="https://www.fransnylund.com/tutorials/tutorials.html">Tutorials</a>
+	  <a href="https://www.fransnylund.com/posts/posts.html">Blog</a>
+	  <a href="https://www.fransnylund.com/contact/contact.html">Contact</a>
+  </header>
+<main class="cmdline">
+<h1 id="things-every-command-line-user-should-know">Things Every Command Line User Should Know</h1>
+<p class="date">Jan 29, 2022</p>
+<p>The command line is incredibly powerful. On the command line, you have full control over your computer. You can launch any program, move and copy any files, delete stuff, update, download, browse the web, poweroff or restart the system, etc. This is much more efficient than using the mouse and GUI programs to click through a bunch of menus and crap. If you’re like me, and you use the command line on a daily basis, you’ll want to read this! Some of these features are Bash only.</p>
+<h2 id="set--o-vi">set -o vi</h2>
+<p>One of the first things you should do when using the terminal on a Linux(or Unix) system is to decide whether you want to use emacs mode or vi mode. This decides how you move around on the command line, how you search in history and stuff like that. <code>set -o emacs</code> is the default, so if you want to stick to that, you can. I prefer <code>set -o vi</code>. I think it’s super useful, especially since I’m a vim user and hence used to the keybindings.</p>
+<p>Here’s a quick little cheat sheet:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Emacs</th>
+<th style="text-align: center;">Vi</th>
+<th style="text-align: center;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ctrl+f</td>
+<td style="text-align: center;">l</td>
+<td style="text-align: center;">Move forward one character.</td>
+</tr>
+<tr class="even">
+<td>Ctrl+b</td>
+<td style="text-align: center;">h</td>
+<td style="text-align: center;">Move backwards one character.</td>
+</tr>
+<tr class="odd">
+<td>CTRL+p</td>
+<td style="text-align: center;">k</td>
+<td style="text-align: center;">Move up (in history) once.</td>
+</tr>
+<tr class="even">
+<td>CTRL+n</td>
+<td style="text-align: center;">j</td>
+<td style="text-align: center;">Move down (in history) once.</td>
+</tr>
+<tr class="odd">
+<td>Ctrl+a</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">Move to the beginning of the line.</td>
+</tr>
+<tr class="even">
+<td>Ctrl+e</td>
+<td style="text-align: center;">$</td>
+<td style="text-align: center;">Move to the end of the line.</td>
+</tr>
+<tr class="odd">
+<td>Ctrl+k</td>
+<td style="text-align: center;">d+$ Delet</td>
+<td style="text-align: center;">e everything right of the cursor.</td>
+</tr>
+<tr class="even">
+<td>Ctrl+w</td>
+<td style="text-align: center;">d+0 Delet</td>
+<td style="text-align: center;">e everything left of the cursor.</td>
+</tr>
+<tr class="odd">
+<td>Ctrl+r</td>
+<td style="text-align: center;">/</td>
+<td style="text-align: center;">Search in history(backwards in emacs).</td>
+</tr>
+</tbody>
+</table>
+<p>Note: all of the Vi keys work in the <em>normal mode</em> not <em>insert mode</em>. You can read about the Vi modes if you want to understand that better. These are just some of the basic ones that’s worth knowing. Remember that you can add <code>set -o vi</code> in your bashrc and have it load every time your load your bashrc.<br />
+</p>
+<h2 id="middle-mouse-button">Middle Mouse Button</h2>
+<p>What a lot of people don’t know is that the mouse originally had three buttons. One left, one in the middle and one on the right. Technically, most mice still have three buttons, but the middle button just functions as a scroll wheel. It can still be mapped to stuff(even on Windows) in games and such.</p>
+<p>The middle mouse button was originally meant for pasting whatever you had selected. Microsoft Windows removed/never implemented this feature for whatever (dumb) reason. Linux(specifically the X11 display server) still has this feature. You can simply select something and then just middle click to paste the text you just selected. This is equivalent of doing Ctrl+C Ctrl+V except it’s much quicker and easier. Linux does also support ctrl+C ctrl+V(or ctrl+Shift+C ctrl+Shift+V) for copying and pasting. This means that Linux has two clipboard buffers which is really awesome.</p>
+<h2 id="section">\</h2>
+<p>This little backslash unaliases the command temporarily, allowing you to use the actual command.</p>
+<p>For example, if I got top aliased to htop, and I do <code>\top</code> it will not execute htop, but top itself.</p>
+<p><code>alias htop="top"</code></p>
+<p><code>top</code></p>
+<p>(I get htop)</p>
+<p><code>\top</code></p>
+<p>(I get top)</p>
+<h2 id="section-1">&gt;|</h2>
+<p>If you have noclobber enabled in your Bash shell, then you’re unable to overwrite files. Well, with this little trick you can force it to overwrite existing files.</p>
+<p><code>echo "hi" &gt; file</code></p>
+<p>bash: file: cannot overwrite existing file</p>
+<p><code>echo "hi" &gt;| file</code></p>
+<p><code>cat file</code></p>
+<p>hi</p>
+<h2 id="section-2">$_</h2>
+<p>I use this <em>all</em> the time. It saves so much time. This is a special variable in Bash that expands to the last commands last argument.</p>
+<p><code>ls</code></p>
+<p>school-notes.md</p>
+<p><code>cat school-notes.md</code></p>
+<p>Some important school notes.</p>
+<p><code>rm $_</code></p>
+<p>The rm removes whatever argument you pass it. <code>$_</code> gets expanded to school-notes.md, so you removed school-notes.md without having retype it!</p>
+<h2 id="and-friends">!! and friends</h2>
+<p>The history commands that all start with an exclamation mark are quite nifty. Let’s look at some of them:</p>
+<h3 id="section-3">!!</h3>
+<p><code>echo "hi"</code></p>
+<p>hi</p>
+<p><code>!!</code></p>
+<p>hi</p>
+<p><code>!!</code> expands to the last command executed in your bash history.</p>
+<h3 id="p">!!:p</h3>
+<p>The :p prints out what <em>would</em> have been executed without actually executing it.</p>
+<p><code>echo "Hello 123"</code></p>
+<p>Hello 123</p>
+<p><code>!!:p</code></p>
+<p>echo Hello 123</p>
+<h3 id="n">!-N</h3>
+<p>The N here can be replaced with any number you want. This will execute the command N commands ago.</p>
+<p><code>echo "Hey1"</code></p>
+<p>Hey1</p>
+<p><code>echo "Hey2"</code></p>
+<p>Hey2</p>
+<p><code>echo "Hey3"</code></p>
+<p>Hey3</p>
+<p><code>!-3</code></p>
+<p>Hey1</p>
+<p><code>!-3</code> here executes the command that got executed three commands ago.</p>
+<p>You can even combine these like this:</p>
+<p><code>!-50:p</code></p>
+<p>This says “print(but do NOT execute) the command that ran 50 commands ago”.</p>
+<h3 id="abc">!abc</h3>
+<p><code>!echo</code> will run the last command that started with abc.</p>
+<p><code>echo "Hello World!"</code></p>
+<p>Hello World</p>
+<p><code>date</code></p>
+<p>Sat Jan 29 16:41:19 EET 2022</p>
+<p><code>!echo</code></p>
+<p>Hello World!</p>
+<p>If you’re eager to read more about history commands, check out <a href="https://samrowe.com/wordpress/advancing-in-the-bash-shell/">this</a>.</p>
+<h2 id="or">`` or $()</h2>
+<p>`` and $() is known as command substitution in Bash. It runs the command you put inside it and returns the result, so you can do cool stuff like:</p>
+<p><code>vim $(mktemp)</code></p>
+<p>This will run the <code>mktemp</code> command – which will output a temporary file – and then open it in vim.</p>
+<p><code>ls -l $(which sh)</code></p>
+<p>lrwxrwxrwx 1 root root 4 Jan 16 10:45 /usr/bin/sh -&gt; dash</p>
+<p>This will run <code>which sh</code> – which will output the path to sh – and then do an <code>ls -l</code> on it.</p>
+<p>Note: $() does the exact same thing as ``, but $() is preferred in shell scripts. `` is usually slightly faster to type on the command line depending on your keyboard.</p>
+<h2 id="var">${var## */}</h2>
+<p>This is called parameter expansion and is one of the most powerful things in Bash. There’s too much to cover here, so if you want to read more about it, go and read the manual <code>man bash</code></p>
+<p>Let’s say you have a variable that stores the path of a program and you want to just grab the programs name. Many people would use basename – but that’s not required. There’s a more efficient way to do it:</p>
+<p><code>mypath="/usr/bin/grep"</code></p>
+<p><code>program="${mypath##*/}"</code></p>
+<p><code>echo $program</code></p>
+<p>grep</p>
+<p>Again, go read about parameter expansion if you want to know more about it.</p>
+<h2 id="shopt--s-extglob">shopt -s extglob</h2>
+<p>I have <em>no</em> idea why this isn’t enabled by default. This is incredibly useful! This option enables extended globbing, which looks a bit like regex.</p>
+<p>Let’s say that you have three markdown files and two pictures in your directory:</p>
+<p><code>ls</code></p>
+<p>file1.md file2.md file3.md photo1.jpg photo2.png</p>
+<p>If you want to <code>ls</code> every file that does <em>not</em> end in .md, then you would do the following:</p>
+<p><code>ls !(*.md)</code></p>
+<p>photo1.jpg photo2.png</p>
+<p>Let’s look at another example:</p>
+<p><code>ls</code></p>
+<p>file1.md file2.md file3.md photo1.jpg photo2.jpg photo3.jpg photo4.jpg</p>
+<p><code>ls +(photo)+(2|3)+(.jpg)</code></p>
+<p>photo2.jpg photo3.jpg</p>
+<p>This matches everything that starts with photo and is followed by either 2 or 3 and ends in .jpg. Isn’t that awesome! It’s like regex(almost). One big difference between regex and extended globbing is that the wildcard(+, ?, *, etc) comes BEFORE the pattern instead of AFTER(like in regex). Learn more about extended globbing <a href="https://www.linuxjournal.com/content/bash-extended-globbing">here</a>.</p>
+<h2 id="shopt--s-autocd">shopt -s autocd</h2>
+<p>Do you ever feel like you keep typing cd a million times and you wish you didn’t have to repeat it all the time? If this is the case, autocd is for you! <code>shopt -s autocd</code> allows you to just specify a directory without having to explicity type “cd” before the directory.</p>
+<p><code>cd Documents</code></p>
+<p><code>shopt -s autocd</code></p>
+<p><code>Documents</code></p>
+<p>Same thing! It automatically cd’s into Documents.</p>
+<h2 id="cdpath">CDPATH</h2>
+<p>You know when you have a PATH variable that Bash looks in when you try to run a program without specifying the full path? What if I told you that there’s something similar but for the cd command? Let me introduce CDPATH. CDPATH is an environmental variable that checks for directories in the variable CDPATH when you cd into stuff that’s not in your directory.</p>
+<p><code>CDPATH="$HOME/scripts"</code></p>
+<p><code>cd Documents/whatever/work</code></p>
+<p><code>pwd</code></p>
+<p>/home/bob/Documents/whatever/work</p>
+<p><code>cd scripts</code></p>
+<p><code>pwd</code></p>
+<p>/home/bob/scripts</p>
+<p>Wow! Would you look at that. It’s like magic!</p>
+<h2 id="vivim-magic">Vi/Vim Magic</h2>
+<p>Speaking about magic, there’s a way to send whatever you type in either the Vi or Vim text editor to any program that follows the Unix philosphy and then retrieve the output! That’s the power of the Unix philosophy. This is why I <strong>love</strong> Unix. The Unix philosophy is about making many small programs that do one thing well and that sort of connect with each other(or communicate easily with each other) i.e they integrate well with other programs.</p>
+<p><code>vim file</code></p>
+<p>(inside vim now)</p>
+<p>2 * 5 + 5</p>
+<p>&lt;pressing !! on the keyboard while on the same line as the equation&gt;</p>
+<p>(:.! appears in vim)</p>
+<p>:.!bc</p>
+<p>15</p>
+<p>We just sent our current line to the bc program(bc is a cli calculator) and we received the output! Awesome! Try it out. It’s truly incredible. You don’t even have to exit Vim to communicate with other programs. Because Vi and Vim follow the Unix philosophy, they can easily send and receive data from here and there. This is similar to the concept of piping – using a programs output as the input for another program – in the sense that it has to do with the programs following the Unix philosophy and integrating well with other programs.</p>
+<h1 id="wrapping-it-all-up">Wrapping it all up</h1>
+<p>I only covered a fraction of the tricks and things every terminal user should know. There’s many more in addition to these hiding in Bash. If you’re interested in learning more, read the manual <code>man bash</code>.</p>
+
+ </main>
+</div>
+</body>
+</html>

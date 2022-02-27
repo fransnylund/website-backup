@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title> Frans's Tech Site</title>
+	<link rel="icon" href="../img/favicon.png" type="image/png">
+	<meta charset="utf-8">
+	<meta name="keywords" content="programming, computers, linux, blog, tutorials">
+	<meta name="description" content="Blog, free Linux tutorials and more!">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../style.css">
+  </head>
+
+
+<body>
+<div class="main">
+  <header>
+	<h1> Frans's Tech Site </h1>
+	<div class="menu">
+	  <a href="https://www.fransnylund.com">Home</a>
+	  <a href="https://www.fransnylund.com/posts/posts.html">Posts</a>
+	  <a href="https://www.fransnylund.com/setup.html">Setup</a>
+	  <a href="https://www.fransnylund.com/contact/contact.html">Contact</a>
+  </header>
+  <main>
+	<h2> Posts </h2>
+	<a href="what-programming-language-should-you-learn-first.html">Jan 3 — What Programming Language Should You Learn First?</a><br><br>
+	<a href="programming-books-that-i-recommend.html">Dec 19 — Programming Books That I Recommend</a><br><br>
+    <a href="latex-tutorial.html">Nov 28 — Latex Introduction</a><br><br>
+	<a href="21-reasons-why-i-use-linux.html">Nov 15 — 21 Reasons Why I use Linux Instead of Windows</a><br><br>
+    <a href="awesome-websites.html">Nov 1 — Awesome Websites</a>
+  </main>
+  </main>
+</div>
+</body>
+
+
+
+
+
+
+
+</html>
+
